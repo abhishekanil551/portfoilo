@@ -3,1579 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Anil - MERN Stack Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Abhishek Anil – MERN Developer</title>
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
-    --text-color: #333;
-    --text-light: #666;
-    --bg-color: #ffffff;
-    --bg-light: #f8f9fa;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-    --border-radius: 12px;
-    --transition: all 0.3s ease;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    transition: var(--transition);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-}
-
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: var(--shadow);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    transition: var(--transition);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background: var(--text-color);
-    margin: 3px 0;
-    transition: var(--transition);
-}
-
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
-    background-size: cover;
-}
-
-.hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.hero-text {
-    color: white;
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.typing-text {
-    display: inline-block;
-    border-right: 3px solid white;
-    animation: typing 3s steps(20) infinite, blink 1s infinite;
-}
-
-@keyframes typing {
-    0%, 100% { width: 0; }
-    50% { width: 100%; }
-}
-
-@keyframes blink {
-    0%, 50% { border-color: white; }
-    51%, 100% { border-color: transparent; }
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-}
-
-.hero-description {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    opacity: 0.8;
-    line-height: 1.8;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: white;
-    color: var(--primary-color);
-    box-shadow: var(--shadow);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-.btn-secondary:hover {
-    background: white;
-    color: var(--primary-color);
-}
-
-/* Hero Image */
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-card {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.profile-img i {
-    font-size: 8rem;
-    color: white;
-    opacity: 0.8;
-}
-
-.floating-icons {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.floating-icons i {
-    position: absolute;
-    font-size: 2rem;
-    color: white;
-    animation: orbit 10s linear infinite;
-}
-
-.floating-icons i:nth-child(1) {
-    top: 10%;
-    left: 50%;
-    animation-delay: 0s;
-}
-
-.floating-icons i:nth-child(2) {
-    top: 50%;
-    right: 10%;
-    animation-delay: -2.5s;
-}
-
-.floating-icons i:nth-child(3) {
-    bottom: 10%;
-    left: 50%;
-    animation-delay: -5s;
-}
-
-.floating-icons i:nth-child(4) {
-    top: 50%;
-    left: 10%;
-    animation-delay: -7.5s;
-}
-
-@keyframes orbit {
-    0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.scroll-arrow {
-    width: 30px;
-    height: 30px;
-    border: 2px solid white;
-    border-top: none;
-    border-left: none;
-    transform: rotate(45deg);
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
-    40% { transform: translateY(-10px) rotate(45deg); }
-    60% { transform: translateY(-5px) rotate(45deg); }
-}
-
-/* Section Styles */
-section {
-    padding: 100px 0;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.section-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-light);
-}
-
-/* About Section */
-.about {
-    background: var(--bg-light);
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.about-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-    line-height: 1.8;
-}
-
-.about-info {
-    margin: 2rem 0;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.info-item i {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-.about-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 2rem;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    color: var(--text-light);
-    font-weight: 500;
-}
-
-/* Skills Section */
-.skills-content {
-    display: grid;
-    gap: 3rem;
-}
-
-.skills-category h3 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.skill-item {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    transition: var(--transition);
-}
-
-.skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.skill-item i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.skill-item span {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.skill-progress {
-    background: #e9ecef;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    width: 0;
-    transition: width 2s ease;
-    border-radius: 4px;
-}
-
-/* Projects Section */
-.projects {
-    background: var(--bg-light);
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: white;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
-}
-
-.project-image {
-    height: 200px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-image i {
-    font-size: 4rem;
-    color: white;
-    opacity: 0.8;
-}
-
-.project-content {
-    padding: 2rem;
-}
-
-.project-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.project-content p {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.tech-tag {
-    background: var(--bg-light);
-    color: var(--primary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.project-link:hover {
-    color: var(--secondary-color);
-}
-
-/* Contact Section */
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-}
-
-.contact-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.contact-info p {
-    color: var(--text-light);
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-.contact-items {
-    margin-bottom: 2rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.contact-item i {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-.contact-item h4 {
-    margin-bottom: 0.3rem;
-    color: var(--text-color);
-}
-
-.contact-item p {
-    color: var(--text-light);
-    margin: 0;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    background: var(--bg-light);
-    color: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: var(--transition);
-    font-size: 1.2rem;
-}
-
-.social-link:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    transform: translateY(-3px);
-}
-
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid #e9ecef;
-    border-radius: var(--border-radius);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-/* Footer */
-.footer {
-    background: var(--text-color);
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.footer-content p {
-    margin-bottom: 0.5rem;
-}
-
-.footer i {
-    color: #e74c3c;
-    margin: 0 0.3rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: white;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: var(--shadow);
-        padding: 2rem 0;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Animation Classes */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-in-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.6s ease;
-}
-
-.slide-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.slide-in-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.6s ease;
-}
-
-.slide-in-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+
+        header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        section {
+            margin: 70px 0;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about p {
+            color: #444;
+            max-width: 700px;
+        }
+
+        .skills-list, .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #f1f1f1;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .project {
+            border: 1px solid #e5e5e5;
+            padding: 20px;
+            border-radius: 6px;
+            width: 100%;
+        }
+
+        .project h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .project p {
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        .project a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .contact a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            margin: 60px 0 20px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img 
-                 src="https://lh3.googleusercontent.com/d/1q0yqniR2VM_5rtHB4CiwnKSwagG1ff1J"
-                 alt="Abhishek Anil"
-                 style="height:30px; width:30px; border-radius:50%; object-fit:cover; margin-right:8px; vertical-align:middle;"
-               >
-                <span class="logo-text">Abhishek Anil</span>
+
+    <header>
+        <img src="https://lh3.googleusercontent.com/d/1q0yqniR2VM_5rtHB4CiwnKSwagG1ff1J" alt="Abhishek">
+        <h1>Abhishek Anil</h1>
+        <p>MERN Stack Developer</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ABOUT -->
+        <section class="about">
+            <h2>About Me</h2>
+            <p>
+                I'm a MERN Stack Developer focused on building clean, functional, and fast full-stack applications.
+                I work with MongoDB, Express, React, and Node.js, and I enjoy creating simple, scalable solutions
+                with clear logic and smooth user flow.
+            </p>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <span class="skill">HTML5</span>
+                <span class="skill">CSS3</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Bootstrap</span>
+                <span class="skill">React.js</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Express.js</span>
+                <span class="skill">MongoDB</span>
+                <span class="skill">Git</span>
             </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="projects">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <h3>FitBoy – Game E-Commerce Platform</h3>
+                <p>
+                    Full-stack MERN ecommerce platform with authentication, admin panel, image uploads
+                    (Cloudinary), image cropping, OTP verification, and offer management.
+                </p>
+                <a href="https://github.com/abhishekanil551/FitBoy">GitHub →</a>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="">Hi, I'm Abhishek</span>
-                    </h1>
-                    <h2 class="hero-subtitle">Full Stack MERN Developer</h2>
-                    <p class="hero-description">
-                        Passionate developer with expertise in HTML, CSS, Bootstrap, JavaScript, MongoDB, Express.js, React.js and Node.js. 
-                        I create modern, responsive web applications that deliver exceptional user experiences.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="profile-img">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="floating-icons">
-                            <i class="fab fa-js-square"></i>
-                            <i class="fab fa-react"></i>
-                            <i class="fab fa-node-js"></i>
-                            <i class="fas fa-database"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="project">
+                <h3>Say No To Drugs – Awareness Website</h3>
+                <p>Responsive awareness site built with HTML, CSS, JS, and Bootstrap.</p>
+                <a href="https://abhishekanil551.github.io/SayNoToDrugs/">Live Demo →</a> •
+                <a href="https://github.com/abhishekanil551/SayNoToDrugs">GitHub</a>
             </div>
-            <div class="scroll-indicator">
-                <div class="scroll-arrow"></div>
+
+            <div class="project">
+                <h3>Starbucks Landing Page Clone</h3>
+                <p>Clean UI clone built using HTML, CSS, and Bootstrap.</p>
+                <a href="https://aabhishekanil.github.io/starbucks/">Live Demo →</a>
             </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+            <div class="project">
+                <h3>Mini Militia UI Clone</h3>
+                <p>Simple UI practice project focusing on layout and structure.</p>
+                <a href="https://aabhishekanil.github.io/mini-militia-clone/">Live Demo →</a>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Hello! I'm Abhishek Anil</h3>
-                    <p>
-                        I'm a passionate MERN Stack Developer currently i am self learning 
-                        With a strong foundation in modern web technologies, I specialize in creating full-stack 
-                        applications that are both functional and visually appealing.
-                    </p>
-                    <p>
-                        My journey in web development started with a curiosity about how websites work, and it has 
-                        evolved into a passion for creating innovative solutions. I enjoy working with technologies 
-                        like MongoDB, Express.js, React.js, and Node.js to build scalable applications.
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kottayam, Kerala, India</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-code"></i>
-                            <span>MERN Stack Developer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">Technologies I work with</p>
-            </div>
-            <div class="skills-content">
-                <div class="skills-category">
-                    <h3>Frontend Technologies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
-                            <span>JavaScript</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-bootstrap"></i>
-                            <span>Bootstrap 5</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3>Backend & Database</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-server"></i>
-                            <span>Express.js</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>MongoDB</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3>Tools & Frameworks</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>VS Code</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>Responsive Design</span>
-                            <div class="skill-progress">
-                                <div class="progress-bar" data-width="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Some of my recent work</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>FitBoy - Game E-Commerce Platform</h3>
-                        <p>Full-stack MERN application for selling games online with user authentication, product filtering, offer management, and image cropping with CropperJS. Integrated Cloudinary for image uploads and implemented session-based OTP verification with NodeMailer.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Cloudinary</span>
-                            <span class="tech-tag">NodeMailer</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/abhishekanil551/FitBoy" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- CONTACT -->
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:abhishekanil551@gmail.com">abhishekanil551@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/abhishekanil551">github.com/abhishekanil551</a></p>
+            <p>Location: Kottayam, Kerala</p>
+        </section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Say No To Drugs - Awareness Website</h3>
-                        <p>Responsive and interactive website promoting anti-drug awareness using pure frontend technologies. Includes informative sections, poster visuals, and animations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/abhishekanil551/SayNoToDrugs" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://abhishekanil551.github.io/SayNoToDrugs/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-coffee"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Starbucks Landing Page Clone</h3>
-                        <p>Static clone of Starbucks homepage focusing on layout, typography, and responsive design principles using pure HTML and CSS.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/aabhishekanil/starbucks" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://aabhishekanil.github.io/starbucks/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <footer>© 2025 Abhishek Anil</footer>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-crosshairs"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Mini Militia Clone</h3>
-                        <p>Basic replica of Mini Militia UI focusing on animation and layout structuring with frontend technologies. Designed for practice in animation and layout structuring.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/aabhishekanil/mini-militia-clone" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://aabhishekanil.github.io/mini-militia-clone/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>BGMI Landing Page Clone</h3>
-                        <p>Responsive landing page clone for BGMI with dynamic effects and interactive elements using JavaScript. Practiced layout design and dynamic effects.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/aabhishekanil/bgmiclone.github" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://aabhishekanil.github.io/bgmiclone.github/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>abhishekanil551@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+91 9061236839</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Kottayam, Kerala, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/abhishekanil551" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://github.com/aabhishekanil" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:abhishekanil551@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+919061236839" class="social-link">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
- <script >
-        // DOM Elements
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-link');
-
-// Mobile Navigation Toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Active navigation link
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Smooth scrolling for navigation links
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Typing animation for hero title
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// Initialize typing animation when page loads
-window.addEventListener('load', () => {
-    const typingElement = document.querySelector('.typing-text');
-    if (typingElement) {
-        typeWriter(typingElement, "Hi, I'm Abhishek Anil", 100);
-    }
-});
-
-// Counter animation for stats
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    function updateCounter() {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.floor(start);
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    }
-    updateCounter();
-}
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            
-            // Animate counters when stats section is visible
-            if (entry.target.classList.contains('stat-number')) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                animateCounter(entry.target, target);
-            }
-            
-            // Animate progress bars when skills section is visible
-            if (entry.target.classList.contains('progress-bar')) {
-                const width = entry.target.getAttribute('data-width');
-                setTimeout(() => {
-                    entry.target.style.width = width + '%';
-                }, 200);
-            }
-        }
-    });
-}, observerOptions);
-
-// Add animation classes and observe elements
-window.addEventListener('load', () => {
-    // Add fade-in animation to sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section, index) => {
-        if (index > 0) { // Skip hero section
-            section.classList.add('fade-in');
-            observer.observe(section);
-        }
-    });
-
-    // Add slide-in animations to specific elements
-    const leftElements = document.querySelectorAll('.about-text, .contact-info');
-    leftElements.forEach(element => {
-        element.classList.add('slide-in-left');
-        observer.observe(element);
-    });
-
-    const rightElements = document.querySelectorAll('.about-stats, .contact-form');
-    rightElements.forEach(element => {
-        element.classList.add('slide-in-right');
-        observer.observe(element);
-    });
-
-    // Observe stat numbers for counter animation
-    const statNumbers = document.querySelectorAll('.stat-number');
-    statNumbers.forEach(stat => {
-        observer.observe(stat);
-    });
-
-    // Observe progress bars for animation
-    const progressBars = document.querySelectorAll('.progress-bar');
-    progressBars.forEach(bar => {
-        observer.observe(bar);
-    });
-
-    // Observe project cards for staggered animation
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.classList.add('fade-in');
-        card.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(card);
-    });
-
-    // Observe skill items for staggered animation
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach((item, index) => {
-        item.classList.add('fade-in');
-        item.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(item);
-    });
-});
-
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
-        
-        // Simple validation
-        if (!name || !email || !subject || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        // Simulate form submission
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        setTimeout(() => {
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            contactForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 2000);
-    });
-}
-
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
-
-// Add hover effects to project cards
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Add click effect to buttons
-const buttons = document.querySelectorAll('.btn');
-buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        let ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
-        
-        let x = e.clientX - e.target.offsetLeft;
-        let y = e.clientY - e.target.offsetTop;
-        
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
-
-// Add CSS for ripple effect
-const style = document.createElement('style');
-style.textContent = `
-    .btn {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Preloader (optional)
-window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
-    }
-});
-
-// Back to top button
-const backToTopBtn = document.createElement('button');
-backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-backToTopBtn.className = 'back-to-top';
-backToTopBtn.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-`;
-
-document.body.appendChild(backToTopBtn);
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.visibility = 'visible';
-    } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.visibility = 'hidden';
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Add hover effect to back to top button
-backToTopBtn.addEventListener('mouseenter', () => {
-    backToTopBtn.style.transform = 'translateY(-3px) scale(1.1)';
-});
-
-backToTopBtn.addEventListener('mouseleave', () => {
-    backToTopBtn.style.transform = 'translateY(0) scale(1)';
-});
-    </script>
 </body>
 </html>
